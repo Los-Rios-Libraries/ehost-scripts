@@ -1,30 +1,34 @@
-function getDOI(db, an, container)
+function getDOI(db, an, container, edsGW)
 { // get doi from api. This is better than getting it from page because many records do not show it on the page but the info is there in the API. 
   //     console.log('getDOI running');
   var doi = '';
-  var URL = 'https://widgets.ebscohost.com/prod/encryptedkey/eds/eds.php?k=eyJjdCI6Im9GbVUzeldxZzg3ZzhXelNKYktRbmc9PSIsIml2IjoiYzg3NWRhOWRhOTQ5ZjkxMGIxZGFiOTAwZDJkZmJhYTUiLCJzIjoiZTAxZTQzYmZhOTViYjJlZSJ9&p=c2FjcmFtLm1haW4ud3NhcGk=&s=0,1,1,0,0,0&q=';
-  var query = 'retrieve?dbid=' + db + '&an=' + an;
-  var retrieveURL = URL + encodeURIComponent(query);
-  jQuery.getJSON(retrieveURL).done(function (data)
+  if (edsGW !== '')
   {
-    //              console.log(data);
-    var identifiers = data.Record.RecordInfo.BibRecord.BibEntity.Identifiers;
-    if (identifiers)
+    console.log(edsGW);
+    var URL = 'https://widgets.ebscohost.com/prod/encryptedkey/eds/eds.php?k=' + edsGW + '&s=0,1,1,0,0,0&q=';
+    var query = 'retrieve?dbid=' + db + '&an=' + an;
+    var retrieveURL = URL + encodeURIComponent(query);
+    jQuery.getJSON(retrieveURL).done(function (data)
     {
-      jQuery.each(identifiers, function (i)
+      //              console.log(data);
+      var identifiers = data.Record.RecordInfo.BibRecord.BibEntity.Identifiers;
+      if (identifiers)
       {
-        if (identifiers[i].Type === 'doi')
+        jQuery.each(identifiers, function (i)
         {
-          doi = identifiers[i].Value;
-          //                      console.log(doi);
-          getOADoi(doi, container);
-        }
-      });
-    }
-  }).fail(function (a, b, c)
-  {
-    console.log('eds api lookup failed, error: ' + c);
-  });
+          if (identifiers[i].Type === 'doi')
+          {
+            doi = identifiers[i].Value;
+            //                      console.log(doi);
+            getOADoi(doi, container);
+          }
+        });
+      }
+    }).fail(function (a, b, c)
+    {
+      console.log('eds api lookup failed, error: ' + c);
+    });
+  }
 }
 
 function getOADoi(doi, container)
@@ -103,6 +107,28 @@ var jQCheck = setInterval(function ()
   else
   {
     clearInterval(jQCheck);
+    var college = document.getElementById('collegeID');
+    if (college)
+    {
+      var edsGW = '';
+      switch (college.innerHTML)
+      {
+      case 'arc':
+        edsGW = 'eyJjdCI6IllDeGlaa21JbEU2VlRmU1FIUmk3XC94Nk9ZNnN4RHRkXC9Hb2NKbXJ4OVo0bz0iLCJpdiI6IjZiZDA4YWI4N2IwYjgwOWIxMTI0ZmEwNDYzYWQxOGQ0IiwicyI6ImE4MGQ5MDk4ZjZmYjM5MjMifQ==&p=YW1lcnJpdi5tYWluLndzYXBp';
+        break;
+      case 'scc':
+        edsGW = 'eyJjdCI6Im9GbVUzeldxZzg3ZzhXelNKYktRbmc9PSIsIml2IjoiYzg3NWRhOWRhOTQ5ZjkxMGIxZGFiOTAwZDJkZmJhYTUiLCJzIjoiZTAxZTQzYmZhOTViYjJlZSJ9&p=c2FjcmFtLm1haW4ud3NhcGk=';
+        break;
+      case 'crc':
+        edsGW = 'eyJjdCI6IjNLNXdlQ0I2V09TWDdBUkYzT3cyaVE9PSIsIml2IjoiOTJkYzAwNzNhN2M4MWE1NDY1ZTg4ZjEzNTFmNjdiYjQiLCJzIjoiZThjNzZmYWE3NDc4ZTM2MiJ9&p=Y29zdW0ubWFpbi53c2FwaQ==';
+        break;
+      case 'flc':
+        edsGW = 'eyJjdCI6InVmNWlcL2tIU3BkNFJWXC9iaU9LTTlhSW1sUmtDR0lUbjBBWTczampFdjFsZz0iLCJpdiI6IjliMjBmMGNmODk5NjJiY2Q1ZTdiZTExMjVlN2QzMmZmIiwicyI6ImIwNzk5OWNiYTI1NTU1NmMifQ==&p=bnMwMTUwOTIubWFpbi53c2FwaQ==';
+        break;
+      default:
+        edsGW = '';
+      }
+    }
     if (location.href.indexOf('/results?') > -1)
     {
       jQuery('.result-list-record').each(function ()
@@ -121,7 +147,7 @@ var jQCheck = setInterval(function ()
             {
               // console.log(info.db);
               // console.log(info.an);
-              getDOI(info.db, info.an, jQuery(this).find('.display-info'));
+              getDOI(info.db, info.an, jQuery(this).find('.display-info'), edsGW);
             }
           }
         }
@@ -135,7 +161,7 @@ var jQCheck = setInterval(function ()
       if (!(jQuery('.custom-link-item a:contains("Full Text")').length))
       { // look for free full text via oadoi
         //      console.log('db: ' + db + ', an: ' + an);
-        getDOI(db, an, jQuery('.format-control:first-of-type'));
+        getDOI(db, an, jQuery('.format-control:first-of-type'), edsGW);
       }
     }
   }
