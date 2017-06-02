@@ -128,8 +128,7 @@ var jQCheck = setInterval(function ()
       default:
         edsGW = '';
       }
-    }
-    if (location.href.indexOf('/results?') > -1)
+      if (location.href.indexOf('/results?') > -1)
     {
       jQuery('.result-list-record').each(function ()
       { // initiate oadoi search
@@ -164,5 +163,7 @@ var jQCheck = setInterval(function ()
         getDOI(db, an, jQuery('.format-control:first-of-type'), edsGW);
       }
     }
+    }
+    
   }
 }, 100);
