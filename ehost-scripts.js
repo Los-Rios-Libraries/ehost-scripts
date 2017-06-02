@@ -134,7 +134,7 @@ var jQCheck = setInterval(function ()
       jQuery('.result-list-record').each(function ()
       { // initiate oadoi search
         var a = jQuery(this);
-        if (a.find('.pubtype-icon').attr('title', 'Academic Journal'))
+        if (a.find('.pubtype-icon').attr('title') === 'Academic Journal')
         {
           var custLinks = a.find('.externalLinks');
           var linkText = custLinks.text();
