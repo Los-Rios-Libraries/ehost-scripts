@@ -166,4 +166,5 @@ var jQCheck = setInterval(function ()
     }
     
   }
+  document.cookie = 'oneSearchDomain=proxy;domain=.losrios.edu'; // set proxy cookie
 }, 100);
