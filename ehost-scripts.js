@@ -128,6 +128,10 @@ var jQCheck = setInterval(function() {
 			}
 			document.cookie = cname + '=' + cvalue + ';' + expires + ' path=/; domain = ' + domain;
 		};
+		var domain = 'ebscohost.com';
+		if (location.hostname.indexOf('losrios.edu') > -1) {
+			domain = 'losrios.edu';
+		}
 		setCookie('homeLibrary', abbr, 30, domain);
 			
 		//  var college = document.getElementById('collegeID');
