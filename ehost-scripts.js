@@ -117,6 +117,17 @@ var jQCheck = setInterval(function() {
 				edsGW = college[i].edsGW;
 			}
 		}
+		var setCookie = function(cname, cvalue, exdays, domain) {
+			var expires; // set exdays to false for session-only cookie
+			if (exdays !== false) {
+				var d = new Date();
+				d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+				expires = ' expires=' + d.toUTCString() + ';';
+			} else {
+				expires = '';
+			}
+			document.cookie = cname + '=' + cvalue + ';' + expires + ' path=/; domain = ' + domain;
+		};
 		//  var college = document.getElementById('collegeID');
 
 		if (location.href.indexOf('/results?') > -1) {
