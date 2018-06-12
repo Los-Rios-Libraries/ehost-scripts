@@ -95,26 +95,32 @@ var jQCheck = setInterval(function() {
 		var custID = pid[0];
 		var college = [{ // allow use of different API profiles for sake of stats
 				'custID': 'amerriv',
+				'abbr': 'arc',
 				'edsGW': 'eyJjdCI6IllDeGlaa21JbEU2VlRmU1FIUmk3XC94Nk9ZNnN4RHRkXC9Hb2NKbXJ4OVo0bz0iLCJpdiI6IjZiZDA4YWI4N2IwYjgwOWIxMTI0ZmEwNDYzYWQxOGQ0IiwicyI6ImE4MGQ5MDk4ZjZmYjM5MjMifQ==&p=YW1lcnJpdi5tYWluLndzYXBp'
 			},
 			{
 				'custID': 'ns015092',
+				'abbr': 'flc',
 				'edsGW': 'eyJjdCI6InVmNWlcL2tIU3BkNFJWXC9iaU9LTTlhSW1sUmtDR0lUbjBBWTczampFdjFsZz0iLCJpdiI6IjliMjBmMGNmODk5NjJiY2Q1ZTdiZTExMjVlN2QzMmZmIiwicyI6ImIwNzk5OWNiYTI1NTU1NmMifQ==&p=bnMwMTUwOTIubWFpbi53c2FwaQ=='
 			},
 			{
 				'custID': 'cosum',
+				'abbr': 'crc',
 				'edsGW': 'eyJjdCI6IjNLNXdlQ0I2V09TWDdBUkYzT3cyaVE9PSIsIml2IjoiOTJkYzAwNzNhN2M4MWE1NDY1ZTg4ZjEzNTFmNjdiYjQiLCJzIjoiZThjNzZmYWE3NDc4ZTM2MiJ9&p=Y29zdW0ubWFpbi53c2FwaQ=='
 			},
 			{
 				'custID': 'sacram',
+				'abbr': 'scc',
 				'edsGW': 'eyJjdCI6Im9GbVUzeldxZzg3ZzhXelNKYktRbmc9PSIsIml2IjoiYzg3NWRhOWRhOTQ5ZjkxMGIxZGFiOTAwZDJkZmJhYTUiLCJzIjoiZTAxZTQzYmZhOTViYjJlZSJ9&p=c2FjcmFtLm1haW4ud3NhcGk='
 			}
 
 		];
 		var edsGW = '';
+		var abbr;
 		for (var i = 0; i < college.length; i++) { // set api profile
 			if (college[i].custID === custID) {
 				edsGW = college[i].edsGW;
+				abbr = college[i].abbr;
 			}
 		}
 		var setCookie = function(cname, cvalue, exdays, domain) {
