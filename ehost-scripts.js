@@ -128,6 +128,8 @@ var jQCheck = setInterval(function() {
 			}
 			document.cookie = cname + '=' + cvalue + ';' + expires + ' path=/; domain = ' + domain;
 		};
+		setCookie('homeLibrary', abbr, 30, domain);
+			
 		//  var college = document.getElementById('collegeID');
 
 		if (location.href.indexOf('/results?') > -1) {
