@@ -29,7 +29,7 @@ function getDOI(db, an, container, edsGW) { // get doi from api. This is better 
 function getOADoi(doi, container) { // use oadoi api to look for free full text.
 	if (doi !== '') {
 		var email = 'karlsej@scc.losrios.edu'; // supposed to append this to query url to help them track usage
-		var apiURL = 'https://api.oadoi.org/v2/' + doi + '?email=' + email;
+		var apiURL = 'https://api.unpaywall.org/v2/' + doi + '?email=' + email;
 		jQuery.getJSON(apiURL).done(function(data) {
 			var isOA = data.best_oa_location;
 			//         console.log('oadoi url: ' + url);
