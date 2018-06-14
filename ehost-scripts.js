@@ -24,9 +24,9 @@ function getDOI(db, an, container, edsGW) { // get doi from api. This is better 
 			});
 
 	}
-}
+};
 
-function getOADoi(doi, container) { // use oadoi api to look for free full text.
+var getOADoi = function(doi, container) { // use oadoi api to look for free full text.
 	if (doi !== '') {
 		var email = 'karlsej@scc.losrios.edu'; // supposed to append this to query url to help them track usage
 		var apiURL = 'https://api.unpaywall.org/v2/' + doi + '?email=' + email;
@@ -44,9 +44,9 @@ function getOADoi(doi, container) { // use oadoi api to look for free full text.
 		});
 	}
 
-}
+};
 
-function appendOALink(url, container) {
+var appendOALink = function(url, container) {
 	//     console.log(container);
 	var el;
 	if (container.hasClass('display-info')) {
@@ -55,10 +55,10 @@ function appendOALink(url, container) {
 		el = jQuery('<li />');
 	}
 	//     console.log(el);
-	el.css('border', 'none').addClass('custom-link-item').html('<span class="custom-link"><a onclick="ga(\'send\', \'event\', \'oadoi link\', \'click\');" target="_blank" href="' + url + '"><img class="icon-image" src="//www.library.losrios.edu/resources/link-icons/oa.png" alt="">View Full Text (open access)</a></span>').appendTo(container);
-}
+	el.css('border', 'none').addClass('custom-link-item').html('<span class="custom-link"><a target="_blank" href="' + url + '"><img class="icon-image" src="//www.library.losrios.edu/resources/link-icons/oa.png" alt="">View Full Text (open access)</a></span>').appendTo(container);
+};
 
-function getItemData(type, el) {
+var getItemData = function(type, el) {
 	var info;
 	if (type === 'detail') {
 		return {
