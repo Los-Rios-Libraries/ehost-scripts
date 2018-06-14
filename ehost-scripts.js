@@ -1,4 +1,5 @@
-function getDOI(db, an, container, edsGW) { // get doi from api. This is better than getting it from page because many records do not show it on the page but the info is there in the API. 
+(function() {
+var getDOI = function(db, an, container, edsGW) { // get doi from api. This is better than getting it from page because many records do not show it on the page but the info is there in the API. 
 	//     console.log('getDOI running');
 	if (db !== '') {
 		var doi = '';
@@ -184,3 +185,4 @@ var jQCheck = setInterval(function() {
 		}
 	}
 }, 100);
+}());
