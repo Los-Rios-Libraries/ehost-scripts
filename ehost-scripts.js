@@ -84,10 +84,7 @@ var getItemData = function(type, el) {
 	} else {
 		return undefined;
 	}
-}
-if (location.hostname.indexOf('losrios.edu') > -1) {
-  document.cookie = 'oneSearchDomain=proxy;domain=.losrios.edu'; // set proxy cookie
-}
+};
 var jQCheck = setInterval(function() {
 	if (typeof(jQuery) !== 'function') {} else {
 		clearInterval(jQCheck);
@@ -137,6 +134,7 @@ var jQCheck = setInterval(function() {
 		};
 		var domain = 'ebscohost.com';
 		if (location.hostname.indexOf('losrios.edu') > -1) {
+			setCookie('onesearchDomain', 'proxy', false, 'losrios.edu');
 			domain = 'losrios.edu';
 		}
 		setCookie('homeLibrary', abbr, 30, domain);
