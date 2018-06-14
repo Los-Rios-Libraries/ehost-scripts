@@ -97,7 +97,7 @@ var smallScreen = (function()
 	}
 }());
 var jQCheck = setInterval(function() {
-	if (typeof(jQuery) !== 'function') {} else {
+	if (typeof(jQuery) === 'function')  {
 		clearInterval(jQCheck);
 		var $ = jQuery;
 		var pid = ep.clientData.pid.split('.');
