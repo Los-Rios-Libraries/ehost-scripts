@@ -85,6 +85,17 @@ var getItemData = function(type, el) {
 		return undefined;
 	}
 };
+var smallScreen = (function()
+{
+	if (document.documentElement.clientWidth < 1024)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}());
 var jQCheck = setInterval(function() {
 	if (typeof(jQuery) !== 'function') {} else {
 		clearInterval(jQCheck);
@@ -92,33 +103,44 @@ var jQCheck = setInterval(function() {
 		var pid = ep.clientData.pid.split('.');
 		var custID = pid[0];
 		var college = [{ // allow use of different API profiles for sake of stats
+				'colName': 'American River College',
 				'custID': 'amerriv',
 				'abbr': 'arc',
+				'homepage': 'http://www.arc.losriso.edu/arclibrary/',
 				'edsGW': 'eyJjdCI6IllDeGlaa21JbEU2VlRmU1FIUmk3XC94Nk9ZNnN4RHRkXC9Hb2NKbXJ4OVo0bz0iLCJpdiI6IjZiZDA4YWI4N2IwYjgwOWIxMTI0ZmEwNDYzYWQxOGQ0IiwicyI6ImE4MGQ5MDk4ZjZmYjM5MjMifQ==&p=YW1lcnJpdi5tYWluLndzYXBp'
 			},
 			{
+				'colName': 'Folsom Lake College',
 				'custID': 'ns015092',
 				'abbr': 'flc',
+				'homepage': 'https://www.flc.losrios.edu/libraries/',
 				'edsGW': 'eyJjdCI6InVmNWlcL2tIU3BkNFJWXC9iaU9LTTlhSW1sUmtDR0lUbjBBWTczampFdjFsZz0iLCJpdiI6IjliMjBmMGNmODk5NjJiY2Q1ZTdiZTExMjVlN2QzMmZmIiwicyI6ImIwNzk5OWNiYTI1NTU1NmMifQ==&p=bnMwMTUwOTIubWFpbi53c2FwaQ=='
 			},
 			{
+				'colName': 'Cosumnes River College',
 				'custID': 'cosum',
 				'abbr': 'crc',
+				'homepage': 'https://www.crc.losrios.edu/services/library/',
 				'edsGW': 'eyJjdCI6IjNLNXdlQ0I2V09TWDdBUkYzT3cyaVE9PSIsIml2IjoiOTJkYzAwNzNhN2M4MWE1NDY1ZTg4ZjEzNTFmNjdiYjQiLCJzIjoiZThjNzZmYWE3NDc4ZTM2MiJ9&p=Y29zdW0ubWFpbi53c2FwaQ=='
 			},
 			{
+				'colName': 'Sacramento City College',
 				'custID': 'sacram',
 				'abbr': 'scc',
-				'edsGW': 'eyJjdCI6Im9GbVUzeldxZzg3ZzhXelNKYktRbmc9PSIsIml2IjoiYzg3NWRhOWRhOTQ5ZjkxMGIxZGFiOTAwZDJkZmJhYTUiLCJzIjoiZTAxZTQzYmZhOTViYjJlZSJ9&p=c2FjcmFtLm1haW4ud3NhcGk='
+				'homepage': 'https://www.scc.losrios.edu/library/',
+				'edsGW': 'eyJjdCI6Im9GbVUzeldxZzg3ZzhXelNKYktRbmc9PSIsIml2IjoiYzg3NWRhOWRhOTQ5ZjkxMGIxZGFiOTAwZDJkZmJhYTUiLCJzIjoiZTAxZTQzYmZhOTViYjJlZSJ9&p=c2FjcmFtLm1haW4ud3NhcGk=',
+				'askWidget': '.ask-block'
 			}
 
 		];
 		var edsGW = '';
 		var abbr;
+		var currentCol;
 		for (var i = 0; i < college.length; i++) { // set api profile
 			if (college[i].custID === custID) {
 				edsGW = college[i].edsGW;
 				abbr = college[i].abbr;
+				currentCol = college[i];
 			}
 		}
 		var setCookie = function(cname, cvalue, exdays, domain) {
@@ -179,6 +201,20 @@ var jQCheck = setInterval(function() {
 					getDOI(db, an, $('.format-control:first-of-type'), edsGW);
 				}
 			}
+
+		}
+		if (smallScreen)
+		{
+			$('#footerLinks').prepend('<li><a href="' + currentCol.homePage + '">' + currentCol.colName + ' Library</a></li>');
+							var waitWidget = setInterval(function()
+					{
+						if ($(currentCol.askWidget).length)
+						{
+							clearInterval(waitWidget);
+							$(currentCol.askWidget).hide();
+						}
+					}, 50);
+			
 
 		}
 	}
