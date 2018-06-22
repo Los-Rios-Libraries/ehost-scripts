@@ -205,15 +205,6 @@ var jQCheck = setInterval(function() {
 		if (smallScreen)
 		{
 			$('#footerLinks').prepend('<li><a href="' + currentCol.homePage + '">' + currentCol.colName + ' Library</a></li>');
-							var waitWidget = setInterval(function()
-					{
-						if ($(currentCol.askWidget).length)
-						{
-							clearInterval(waitWidget);
-							$(currentCol.askWidget).hide();
-						}
-					}, 50);
-			
 
 		}
 	}
