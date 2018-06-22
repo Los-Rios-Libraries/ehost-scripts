@@ -179,6 +179,73 @@ var jQCheck = setInterval(function() {
 				}
 			});
 		} else if (location.href.indexOf('/detail/') > -1) {
+			(function()
+			{
+				// permalinks on detailed record pages
+				$('.citation-title').after(
+					'<dt>Permalink:</dt><dd id="lr-permalink-dd"><input id="lr-input-permalink" type="text" value="' + ep.clientData.plink + '"> <button id="lr-copy-permalink" type="button" class="button ">&#128279; Copy URL</button></dd>'
+
+				);
+
+				var input = $('#lr-input-permalink');
+				input.on('click', function()
+				{
+					this.select();
+				});
+				if (typeof(document.execCommand) === 'function')
+				{ // make sure browser is able to copy to clipboard
+
+					$('#lr-copy-permalink').show().on('click', function()
+					{
+
+						input.select();
+						document.execCommand('Copy');
+						input.blur();
+						if (!($('#lr-permalink-copied').length))
+						{
+							$('body').append('<div id="lr-permalink-copied" >Link copied to clipboard</div>');
+						}
+						var permCopied = $('#lr-permalink-copied');
+						permCopied.dialog(
+						{
+							create: function()
+							{
+								permCopied.parent().attr('id', 'lr-permalink-dialog');
+							},
+							position:
+							{
+								my: 'right bottom',
+								at: 'right top',
+								of: $('#lr-copy-permalink')
+							},
+							minHeight: 20,
+							hide:
+							{
+								effect: 'fadeOut'
+							},
+							show:
+							{
+								effect: 'fadeIn'
+							},
+							open: function()
+							{
+								setTimeout(function()
+								{
+									permCopied.dialog('close');
+
+								}, 5000);
+
+							}
+
+						});
+
+					});
+				}
+
+
+
+			}());
+
 			var info = getItemData('detail', null);
 			var db = info.db;
 			var an = info.an;
