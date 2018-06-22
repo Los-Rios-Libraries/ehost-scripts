@@ -262,7 +262,7 @@ var jQCheck = setInterval(function() {
 				}
 			}
 			if (article === true) {
-				if (!($('.custom-link-item a:contains("Full Text")').length)) { // look for free full text via oadoi
+				if ((!($('.custom-link-item a:contains("Full Text")').length)) && (!($('.pdf-ft').length)) && (!($('.html-ft').length)) ) { // look for free full text via oadoi
 					//      console.log('db: ' + db + ', an: ' + an);
 					getDOI(db, an, $('.format-control:first-of-type'), edsGW);
 				}
