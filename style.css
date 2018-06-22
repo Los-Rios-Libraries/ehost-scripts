@@ -1,0 +1,23 @@
+/* permalink copying feature */
+#lr-permalink-dd {margin-top:-.5em !important;}
+#lr-input-permalink {width:80%;}
+#lr-copy-permalink {display:none; font-size:1em !important; height:auto !important; padding:4px !important; }
+#lr-permalink-dialog {background: #F9EDBE; width: auto !important;}
+#lr-permalink-copied {height:auto !important;text-align: center; background:#F9EDBE; padding:4px;}
+#lr-permalink-dialog .ui-resizable-handle {display: none !important; }
+#lr-permalink-dialog .ui-dialog-titlebar {display:none;}
+@media (max-width: 1023px) {
+	.branding-container {display:block !important;}
+	#lr-input-permalink {width:100%;}
+	#optionsControls {z-index:1000;}
+	.dateSliderPublication {display:block !important;}
+	.ask-widget {display:none;}
+}
+@media (max-width:620px) {
+	.lois-req-but {margin-left:0 !important;}
+	#citationFields dd {margin-left: 0; padding-left: 0;}
+	#citationFields dt {float:none; width:auto;}
+	.rtac.toggle-container {clear:right; overflow-x:auto !important;}
+	.lr-cite-label {float:none; width:auto;}
+	.lr-cite-value {margin-left:0;}
+}
