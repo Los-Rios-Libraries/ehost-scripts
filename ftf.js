@@ -50,7 +50,7 @@
 		{
 			// send user on to first link if it is a full-text link - set cookie to allow back button to be used in case of error
 			var firstLink = $('a[data-auto="menu-link"]:first'); // get first link
-			if (firstLink.closest('div').prev().text().indexOf('Full Text') > -1) // our links are in categories--makes sure this is under the correct label
+			if (firstLink.closest('.basic-list').prev().text().indexOf('Full Text') > -1) // our links are in categories--makes sure this is under the correct label
 			{
 				var destination = firstLink.attr('href');
 				var cookieID = 'lrFTF_' + destination.slice(-20); // need to set a unique id -- no accession number on page so use end of link
