@@ -46,6 +46,19 @@
 			}
 
 		}
+		else {
+			if (getCookie('lrFTF') !== '1') {
+					// send user on to first link if it is a full-text link - set cookie to allow back button to be used in case of error
+			var firstLink = $('a[data-auto="menu-link"]:first');
+			if (firstLink.closest('div').prev().text().indexOf('Full Text') > -1) {
+				document.cookie = 'lrFTF=1';
+				var url = location.protocol + '//' + location.hostname + firstLink.attr('href');
+				location.href = url;
+			}
+				
+			}
+		
+		}
 
 	});
 
