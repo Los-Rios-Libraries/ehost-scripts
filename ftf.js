@@ -46,20 +46,22 @@
 			}
 
 		}
-		else {
-			if (getCookie('lrFTF') !== '1') {
-					// send user on to first link if it is a full-text link - set cookie to allow back button to be used in case of error
-			var firstLink = $('a[data-auto="menu-link"]:first');
-			if (firstLink.closest('div').prev().text().indexOf('Full Text') > -1) {
-				document.cookie = 'lrFTF=1';
-				var url = location.protocol + '//' + location.hostname + firstLink.attr('href');
-				location.href = url;
+		else
+		{
+			// send user on to first link if it is a full-text link - set cookie to allow back button to be used in case of error
+			var firstLink = $('a[data-auto="menu-link"]:first'); // get first link
+			if (firstLink.closest('div').prev().text().indexOf('Full Text') > -1) // our links are in categories--makes sure this is under the correct label
+			{
+				var destination = firstLink.attr('href');
+				var cookieID = 'lrFTF_' + destination.slice(-20); // need to set a unique id -- no accession number on page so use end of link
+				if (getCookie(cookieID) !== '1') // if user hits back button, the following will not happen
+				{
+					document.cookie = cookieID + '=1'; // set cookie to allow back button to function
+					var url = location.protocol + '//' + location.hostname + destination; // href attribute includes relative path so need to construct full URL
+					location.href = url;
+				}
 			}
-				
-			}
-		
 		}
-
 	});
 
 }());
