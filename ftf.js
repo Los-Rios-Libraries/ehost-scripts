@@ -1,4 +1,4 @@
-(function() {
+jQuery(document).ready(function($) {
 	var getCookie = function(cname) {
 		var name = cname + "=";
 		var ca = document.cookie.split(';');
@@ -9,29 +9,7 @@
 		}
 		return "";
 	};
-	var waitForJQ = function(cb) {
-		var retrieveJQ = setTimeout(function() { // if after 6 seconds jQuery has not been loaded, load it from remote source
-			if (typeof(jQuery) === 'undefined') {
-				var a = document.createElement('script');
-				a.src = '//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js';
-				a.async = false;
-				document.getElementsByTagName('head')[0].appendChild(a);
-			}
-		}, 6000);
-		var jqCall = setInterval(function() { // ebsco warns that jquery may not be loaded initially
-			if (typeof(jQuery) === 'function') {
-				console.log('jquery found');
-				clearTimeout(retrieveJQ);
-				clearInterval(jqCall);
-				console.log('timeout cleared');
-				cb(jQuery);
-			} else {
-				console.log('no jQuery!');
-			}
-		}, 50);
-	};
 
-	waitForJQ(function($) {
 		var a = $('.ftf-results .error');
 		if (a.length) {
 			if (a.text().indexOf('No results') > -1) {
@@ -64,4 +42,6 @@
 		}
 	});
 
-}());
+	
+	
+});
