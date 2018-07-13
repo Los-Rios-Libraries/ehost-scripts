@@ -271,7 +271,7 @@ var jQCheck = setInterval(function() {
 		}
 		if (smallScreen)
 		{
-			$('#footerLinks').prepend('<li><a href="' + currentCol.homePage + '">' + currentCol.colName + ' Library</a></li>');
+			$('#footerLinks').prepend('<li><a href="' + currentCol.homepage + '">' + currentCol.colName + ' Library</a></li>');
 
 		}
 	}
