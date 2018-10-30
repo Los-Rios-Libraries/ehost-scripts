@@ -274,6 +274,200 @@ var jQCheck = setInterval(function() {
 			$('#footerLinks').prepend('<li><a href="' + currentCol.homepage + '">' + currentCol.colName + ' Library</a></li>');
 
 		}
+			
+		var ebDbs = [
+			{
+				abb: 'a9h',
+				name: 'Academic Search Complete'
+			},
+			{
+				abb: 'l0h',
+				name: 'America: History and Life with Full Text'
+			},
+			{
+				abb: 'bth',
+				name: 'Business Source Complete'
+			},
+			{
+				abb: 'rzh',
+				name: 'CINAHL Plus with Full Text'
+			},
+			{
+				abb: 'ufh',
+				name: 'Communication & Mass Media Complete'
+			},
+			{
+				abb: 'i3h',
+				name: 'Criminal Justice Abstracts with Full Text'
+			},
+			{
+				abb: 'e000xna',
+				name: 'eBook Academic Collection'
+			},
+			{
+				abb: 'nlebk',
+				name: 'eBook Collection'
+			},
+			{
+				abb: 'ehh',
+				name: 'Education Research Complete'
+			},
+			{
+				abb: 'eoah',
+				name: 'E-Journals'
+			},
+			{
+				abb: 'eih',
+				name: 'Environment Complete'
+			},
+			{
+				abb: 'eric',
+				name: 'ERIC'
+			},
+			{
+				abb: 'funk',
+				name: 'Funk & Wagnalls New World Encyclopedia'
+			},
+			{
+				abb: '8gh',
+				name: 'GreenFILE'
+			},
+			{
+				abb: 'hxh',
+				name: 'Health Source - Consumer Edition'
+			},
+			{
+				abb: 'hch',
+				name: 'Health Source: Nursing/Academic Edition'
+			},
+			{
+				abb: 'ibh',
+				name: 'International Bibliography of Theatre & Dance with Full Text'
+			},
+			{
+				abb: 'lxh',
+				name: 'Library, Information Science & Technology Abstracts'
+			},
+			{
+				abb: 'lkh',
+				name: 'Literary Reference Center Plus'
+			},
+			{
+				abb: 'ulh',
+				name: 'MAS Ultra - School Edition'
+			},
+			{
+				abb: 'f6h',
+				name: 'MasterFILE Complete'
+			},
+			{
+				abb: 'cmedm',
+				name: 'MEDLINE'
+			},
+			{
+				abb: 'mth',
+				name: 'Military & Government Collection'
+			},
+			{
+				abb: 'n5h',
+				name: 'Newspaper Source Plus'
+			},
+			{
+				abb: 'ddu',
+				name: 'OpenDissertations'
+			},
+			{
+				abb: 'poh',
+				name: 'Political Science Complete'
+			},
+			{
+				abb: 'prh',
+				name: 'Primary Search'
+			},
+			{
+				abb: 'pdh',
+				name: 'Psychology and Behavioral Sciences Collection'
+			},
+			{
+				abb: 'bwh',
+				name: 'Regional Business News'
+			},
+			{
+				abb: 'b9h',
+				name: 'Small Business Reference Center'
+			},
+			{
+				abb: 'sih',
+				name: 'SocINDEX with Full Text'
+			},
+			{
+				abb: 'trh',
+				name: 'Teacher Reference Center'
+			}
+
+
+
+		];
+		var currentDbName = (function()
+		{
+			if (ep.clientData.currentRecord)
+			{
+				var db = ep.clientData.currentRecord.Db;
+				var dbName = '';
+				for (var i = 0; i < ebDbs.length; i++)
+				{
+					if (ebDbs[i].abb === db)
+					{
+						dbName = ebDbs[i].name;
+						break;
+					}
+				}
+				return dbName;
+			}
+
+
+		}());
+
+		// include content in subject line for emails
+		var loadSubj = function(selector)
+		{
+			var title = $('h1').html();
+			var arr = title.split(' ');
+			var end = '';
+			var limit = 8; // max number of words before subject line gets truncated
+			if (arr.length > limit)
+			{
+				end = '...';
+				arr = arr.slice(0, limit + 1);
+			}
+			var db = '';
+			if (currentDbName !== '')
+			{
+				db = ' - ' + currentDbName;
+			}
+			var emailSubj = arr.join(' ') + end + db;
+			var wait = setInterval(function()
+			{
+				if ($(selector).length)
+				{
+					clearInterval(wait);
+					$(selector).val(emailSubj);
+				}
+
+
+			}, 100);
+		};
+
+		$('.email-link').on('click', function()
+		{
+			loadSubj('#DeliveryEmailSubject');
+		});
+
+		
+		
 	}
+
+
+
 }, 100);
 }());
