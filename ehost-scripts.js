@@ -96,6 +96,30 @@ var smallScreen = (function()
 		return false;
 	}
 }());
+// show note when there are problems
+var showNote = (function(fileName) {
+	if (this.getCookie(fileName) !== 'hide') {
+		var url = 'https://www.library.losrios.edu/resources/ehost-scripts/' + fileName + '.php'; // this file needs to be edited with current message
+		$.get(url)
+		.done(function(response) {
+			if (response !== '') {
+				$('<p id="problem-note" style="display:none;">' + response + '<button id="problem-note-dismiss" class="button" type="button">Hide this message</button></p>').prependTo('#header').slideDown('slow');
+				$('#problem-note-dismiss').on('click', function() {
+					$(this).parent().slideUp();
+					var domain = (function() {
+						var arr = location.host.split('.');
+						var result = arr.slice(arr.length -2);
+						return result.join('.');
+						}());
+					_LR.fn.setCookie(fileName, 'hide', false, domain);
+					});
+				}
+				})
+		.fail(function(a, b, c) {
+			console.log('problem note error: ' + c);
+		});
+		}
+});
 var jQCheck = setInterval(function() {
 	if (typeof(jQuery) === 'function')  {
 		clearInterval(jQCheck);
@@ -462,6 +486,7 @@ var jQCheck = setInterval(function() {
 		{
 			loadSubj('#DeliveryEmailSubject');
 		});
+		showNote('note');
 
 		
 		

@@ -1,3 +1,7 @@
+/* problem note */
+#problem-note {font-weight:bold; border:1px solid #ccc; background: #f9edbe; padding:8px;}
+#problem-note-dismiss {font-size:90%;}
+
 /* permalink copying feature */
 #lr-permalink-dd {margin-top:-.5em !important;}
 #lr-input-permalink {width:80%;}
