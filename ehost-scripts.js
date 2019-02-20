@@ -98,7 +98,7 @@ var smallScreen = (function()
 }());
 // show note when there are problems
 var showNote = (function(fileName) {
-	if (this.getCookie(fileName) !== 'hide') {
+	if (document.cookie.indexOf(fileName + '=hide') === -1) {
 		var url = 'https://www.library.losrios.edu/resources/ehost-scripts/' + fileName + '.php'; // this file needs to be edited with current message
 		$.get(url)
 		.done(function(response) {
@@ -111,7 +111,7 @@ var showNote = (function(fileName) {
 						var result = arr.slice(arr.length -2);
 						return result.join('.');
 						}());
-					_LR.fn.setCookie(fileName, 'hide', false, domain);
+					setCookie(fileName, 'hide', false, domain);
 					});
 				}
 				})
