@@ -1,4 +1,15 @@
 (function() {
+	var setCookie = function(cname, cvalue, exdays, domain) {
+		var expires; // set exdays to false for session-only cookie
+		if (exdays !== false) {
+			var d = new Date();
+			d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+			expires = ' expires=' + d.toUTCString() + ';';
+			} else {
+				expires = '';
+			}
+		document.cookie = cname + '=' + cvalue + ';' + expires + ' path=/; domain = ' + domain;
+	};
 var getDOI = function(db, an, container, edsGW) { // get doi from api. This is better than getting it from page because many records do not show it on the page but the info is there in the API. 
 	//     console.log('getDOI running');
 	if (db !== '') {
@@ -166,17 +177,6 @@ var jQCheck = setInterval(function() {
 				currentCol = college[i];
 			}
 		}
-		var setCookie = function(cname, cvalue, exdays, domain) {
-			var expires; // set exdays to false for session-only cookie
-			if (exdays !== false) {
-				var d = new Date();
-				d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-				expires = ' expires=' + d.toUTCString() + ';';
-			} else {
-				expires = '';
-			}
-			document.cookie = cname + '=' + cvalue + ';' + expires + ' path=/; domain = ' + domain;
-		};
 		var domain = 'ebscohost.com';
 		if (location.hostname.indexOf('losrios.edu') > -1) {
 			setCookie('onesearchDomain', 'proxy', false, 'losrios.edu');
