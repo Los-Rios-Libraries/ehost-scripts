@@ -475,6 +475,8 @@ var jQCheck = setInterval(function() {
 				if ($(selector).length)
 				{
 					clearInterval(wait);
+					var message = '<p id="lr-email-warning"><strong>Warning: some users are reporting problems receiving articles emailed from OneSearch. Consider saving articles to your computer instead. (February 22, 2019, 8:55 am)</strong></p>';
+					$('.panel-header').after(message);
 					$(selector).val(emailSubj);
 				}
 
