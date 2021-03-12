@@ -190,14 +190,6 @@ var jQCheck = setInterval(function() {
 				name: 'CINAHL Plus with Full Text'
 			},
 			{
-				abb: 'ufh',
-				name: 'Communication & Mass Media Complete'
-			},
-			{
-				abb: 'i3h',
-				name: 'Criminal Justice Abstracts with Full Text'
-			},
-			{
 				abb: 'e000xna',
 				name: 'eBook Academic Collection'
 			},
@@ -208,14 +200,6 @@ var jQCheck = setInterval(function() {
 			{
 				abb: 'ehh',
 				name: 'Education Research Complete'
-			},
-			{
-				abb: 'eoah',
-				name: 'E-Journals'
-			},
-			{
-				abb: 'eih',
-				name: 'Environment Complete'
 			},
 			{
 				abb: 'eric',
@@ -238,16 +222,8 @@ var jQCheck = setInterval(function() {
 				name: 'Health Source: Nursing/Academic Edition'
 			},
 			{
-				abb: 'ibh',
-				name: 'International Bibliography of Theatre & Dance with Full Text'
-			},
-			{
 				abb: 'lxh',
 				name: 'Library, Information Science & Technology Abstracts'
-			},
-			{
-				abb: 'lkh',
-				name: 'Literary Reference Center Plus'
 			},
 			{
 				abb: 'ulh',
@@ -274,10 +250,6 @@ var jQCheck = setInterval(function() {
 				name: 'OpenDissertations'
 			},
 			{
-				abb: 'poh',
-				name: 'Political Science Complete'
-			},
-			{
 				abb: 'prh',
 				name: 'Primary Search'
 			},
@@ -288,14 +260,6 @@ var jQCheck = setInterval(function() {
 			{
 				abb: 'bwh',
 				name: 'Regional Business News'
-			},
-			{
-				abb: 'b9h',
-				name: 'Small Business Reference Center'
-			},
-			{
-				abb: 'sih',
-				name: 'SocINDEX with Full Text'
 			},
 			{
 				abb: 'trh',
