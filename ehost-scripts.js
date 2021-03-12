@@ -56,25 +56,25 @@ var jQCheck = setInterval(function() {
 				'colName': 'American River College',
 				'custID': 'amerriv',
 				'abbr': 'arc',
-				'homepage': 'https://arc.losrios.edu/student-resources/library'
+				'homepage': 'https://arc.losrios.edu/student-resources/library',
 			},
 			{
 				'colName': 'Folsom Lake College',
 				'custID': 'ns015092',
 				'abbr': 'flc',
-				'homepage': 'https://flc.losrios.edu/student-resources/library'
+				'homepage': 'https://flc.losrios.edu/student-resources/library',
 			},
 			{
 				'colName': 'Cosumnes River College',
 				'custID': 'cosum',
 				'abbr': 'crc',
-				'homepage': 'https://crc.losrios.edu/student-resources/library'
+				'homepage': 'https://crc.losrios.edu/student-resources/library',
 			},
 			{
 				'colName': 'Sacramento City College',
 				'custID': 'sacram',
 				'abbr': 'scc',
-				'homepage': 'https://www.scc.losrios.edu/library/'
+				'homepage': 'https://scc.losrios.edu/library/',
 			}
 
 		];
