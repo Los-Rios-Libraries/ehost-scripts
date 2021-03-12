@@ -1,3 +1,10 @@
+/* needed for libwizard? */
+body {overflow-y:visible !important;}
+
+/* ask a librarian */
+div[id^="libchat_"] {position:fixed; right:20px; bottom:10px; z-index:20000;}
+/*.libchat_btn_img {max-width: 120px;}*/
+
 /* problem note */
 #problem-note {font-weight:bold; border:1px solid #ccc; background: #f9edbe; padding:8px;}
 #problem-note-dismiss {font-size:90%;}

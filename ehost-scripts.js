@@ -57,35 +57,40 @@ var jQCheck = setInterval(function() {
 				'custID': 'amerriv',
 				'abbr': 'arc',
 				'homepage': 'https://arc.losrios.edu/student-resources/library',
+				'libchatHash' : 'd05703ccd4c26fdae51ae0d0f5df25e1'
 			},
 			{
 				'colName': 'Folsom Lake College',
 				'custID': 'ns015092',
 				'abbr': 'flc',
 				'homepage': 'https://flc.losrios.edu/student-resources/library',
+				'libchatHash': '7470fe5975ab434abfdbef6de53f6206'
 			},
 			{
 				'colName': 'Cosumnes River College',
 				'custID': 'cosum',
 				'abbr': 'crc',
 				'homepage': 'https://crc.losrios.edu/student-resources/library',
+				'libchatHash': '46725c6c901e366cccd1c3598f4ece18'
 			},
 			{
 				'colName': 'Sacramento City College',
 				'custID': 'sacram',
 				'abbr': 'scc',
 				'homepage': 'https://scc.losrios.edu/library/',
+				'libchatHash': '3ed10430124d950ef2b216a68e1b18ba'
 			}
 
 		];
-		var edsGW = '';
 		var abbr;
 		var currentCol;
+		var libchatHash;
 		for (var i = 0; i < college.length; i++) { // set api profile
 			if (college[i].custID === custID) {
 				edsGW = college[i].edsGW;
 				abbr = college[i].abbr;
 				currentCol = college[i];
+				libchatHash = college[i].libchatHash;
 			}
 		}
 		var domain = 'ebscohost.com';
@@ -324,12 +329,19 @@ var jQCheck = setInterval(function() {
 			loadSubj('#DeliveryEmailSubject');
 		});
 		showNote('note');
-
-		
-		
+		(function() { // load libchat
+			var div = document.createElement('div');
+			div.id = 'libchat_' + libchatHash;
+			document.getElementsByTagName('body')[0].appendChild(div);
+			var scr = document.createElement('script');
+			scr.src = 'https://v2.libanswers.com/load_chat.php?hash=' + libchatHash;
+			setTimeout(function() {
+				document.getElementsByTagName('body')[0].appendChild(scr);
+				$('#content').append(div);
+			}, 2000);
+		}());		
 	}
 
-
-
 }, 100);
+	
 }());
