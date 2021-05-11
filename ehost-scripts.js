@@ -98,15 +98,37 @@ var jQCheck = setInterval(function() {
 			domain = 'losrios.edu';
 		}
 		setCookie('homeLibrary', abbr, 30, domain);
+		var proxy = 'https://ezproxy.losrios.edu/login?url=';
+		var homePage = proxy + 'search.ebscohost.com/login.aspx?authtype=cookie,ip,uid&profile=' + ep.interfaceId + '&defaultdb=' + ep.clientData.db[0];
+		var permalink = '';
+		var pageType = '';
+		if (location.href.indexOf('/basic') > -1) {
+			permalink = homePage;
+			pageType = 'basic';
+		} else if (location.href.indexOf('/results') > -1) {
+			// issue with ebooks profile
+			if (ep.cliendData.pid.indexOf('.ebooks') > -1) {
+				permalink = $('#pLink').val() + '&profile=ebooks';
+			} else {
+				permalink = $('#pLink').val();
+			}
+			pageType = 'result';
+		} else if (location.href.indexOf('/detail/') > -1) {
+			permalink = ep.clientData.plink;
+			pageType = 'detailedRecord';
+		} else if (location.href.indexOf('/advanced') > -1) {
+			permalink = homePage;
+			pageType = 'advanced';
+		}
 			
 		//  var college = document.getElementById('collegeID');
-
-		if (location.href.indexOf('/detail/') > -1) {
+		if (pageType === 'detailedRecord') {
+			
 			(function()
 			{
 				// permalinks on detailed record pages
 				$('.citation-title').after(
-					'<dt>Permalink:</dt><dd id="lr-permalink-dd"><input id="lr-input-permalink" type="text" value="' + ep.clientData.plink + '"> <button id="lr-copy-permalink" type="button" class="button ">&#128279; Copy URL</button></dd>'
+					'<dt>Permalink:</dt><dd id="lr-permalink-dd"><input id="lr-input-permalink" type="text" value="' + permalink + '"> <button id="lr-copy-permalink" type="button" class="button ">&#128279; Copy URL</button></dd>'
 
 				);
 
