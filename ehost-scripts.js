@@ -354,12 +354,25 @@ var jQCheck = setInterval(function() {
 			var div = document.createElement('div');
 			div.id = 'libchat_' + libchatHash;
 			document.getElementsByTagName('body')[0].appendChild(div);
-			var scr = document.createElement('script');
-			scr.src = 'https://v2.libanswers.com/load_chat.php?hash=' + libchatHash;
-			setTimeout(function() {
-				document.getElementsByTagName('body')[0].appendChild(scr);
-				$('#content').append(div);
-			}, 2000);
+			if (abbr !== 'scc') {
+				var scr = document.createElement('script');
+				scr.src = 'https://v2.libanswers.com/load_chat.php?hash=' + libchatHash;
+				setTimeout(function() {
+					document.getElementsByTagName('body')[0].appendChild(scr);
+					$('#content').append(div);
+				}, 2000);
+			}
+			else {
+				var chatWinWidth = 300;
+				var chatWinHeight = 340;
+				var chatUrl = 'https://answers.library.losrios.edu/chat/widget/' + libchatHash + '?referer=' + encodeURIComponent(permalink);
+				$(div).append('<a id="libchat-popup" href="' + chatUrl +'"><img class="libchat_btn_img"  src="https://libapps.s3.amazonaws.com/accounts/816/images/ask-a-librarian.png" alt="Ask a Librarian"></a>');
+				$('#libchat-popup').on('click', function(e) {
+					e.preventDefault();
+					window.open(chatUrl, 'libchat', 'height=340,width=300,menubar=no,statusbar=no,left=' + ($(window).width() - chatWinWidth - 20)+',top='+ ($(window).height() - chatWinHeight - 150));
+				});
+			}
+			
 		}());		
 	}
 
