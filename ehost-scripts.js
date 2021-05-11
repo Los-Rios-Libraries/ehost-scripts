@@ -87,7 +87,6 @@ var jQCheck = setInterval(function() {
 		var libchatHash;
 		for (var i = 0; i < college.length; i++) { // set api profile
 			if (college[i].custID === custID) {
-				edsGW = college[i].edsGW;
 				abbr = college[i].abbr;
 				currentCol = college[i];
 				libchatHash = college[i].libchatHash;
