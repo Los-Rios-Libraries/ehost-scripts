@@ -113,7 +113,7 @@ var jQCheck = setInterval(function() {
 			pageType = 'basic';
 		} else if (location.href.indexOf('/results') > -1) {
 			// issue with ebooks profile
-			if (ep.cliendData.pid.indexOf('.ebooks') > -1) {
+			if (ep.clientData.pid.indexOf('.ebooks') > -1) {
 				permalink = $('#pLink').val() + '&profile=ebooks';
 			} else {
 				permalink = $('#pLink').val();
