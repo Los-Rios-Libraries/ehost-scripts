@@ -59,6 +59,7 @@ var jQCheck = setInterval(function() {
 				'homepage': 'https://arc.losrios.edu/student-resources/library',
 				'libchatHash' : 'd05703ccd4c26fdae51ae0d0f5df25e1',
 				'libchatImage': 'https://libapps.s3.amazonaws.com/customers/932/images/Chat_wLibrarian__002_.png',
+				'imgHeight': '100px'
 			},
 			{
 				'colName': 'Folsom Lake College',
@@ -66,7 +67,8 @@ var jQCheck = setInterval(function() {
 				'abbr': 'flc',
 				'homepage': 'https://flc.losrios.edu/student-resources/library',
 				'libchatHash': '7470fe5975ab434abfdbef6de53f6206',
-				'libchatImage': 'https://flc.losrios.edu/flc/main/img/Body-Office-UniversalDetail-940x529/Library/Graphics/ask-librarian.svg'
+				'libchatImage': 'https://flc.losrios.edu/flc/main/img/Body-Office-UniversalDetail-940x529/Library/Graphics/ask-librarian.svg',
+				'imgHeight': '75px'
 			},
 			{
 				'colName': 'Cosumnes River College',
@@ -74,7 +76,8 @@ var jQCheck = setInterval(function() {
 				'abbr': 'crc',
 				'homepage': 'https://crc.losrios.edu/student-resources/library',
 				'libchatHash': '46725c6c901e366cccd1c3598f4ece18',
-				'libchatImage': ''
+				'libchatImage': 'https://libapps.s3.amazonaws.com/accounts/109656/images/ask-a-librarian_orangebubble-paths.png',
+				'imgHeight': '75px'
 			},
 			{
 				'colName': 'Sacramento City College',
@@ -82,7 +85,8 @@ var jQCheck = setInterval(function() {
 				'abbr': 'scc',
 				'homepage': 'https://scc.losrios.edu/library/',
 				'libchatHash': '3ed10430124d950ef2b216a68e1b18ba',
-				'libchatImage': 'https://libapps.s3.amazonaws.com/accounts/816/images/ask-a-librarian.png" alt="Ask a Librarian'
+				'libchatImage': 'https://libapps.s3.amazonaws.com/accounts/816/images/ask-a-librarian.png" alt="Ask a Librarian',
+				'imgHeight': '80px'
 			}
 
 		];
@@ -96,6 +100,7 @@ var jQCheck = setInterval(function() {
 				currentCol = college[i];
 				libchatHash = college[i].libchatHash;
 				libchatImage = college[i].libchatImage;
+				imgHeight = college[i].imgHeight;
 			}
 		}
 		var domain = 'ebscohost.com';
@@ -372,7 +377,7 @@ var jQCheck = setInterval(function() {
 				var chatWinWidth = 300;
 				var chatWinHeight = 340;
 				var chatUrl = 'https://answers.library.losrios.edu/chat/widget/' + libchatHash + '?referer=' + encodeURIComponent(permalink);
-				$(div).append('<a id="libchat-popup" href="' + chatUrl +'"><img style="height:100px;" class="libchat_btn_img"  src="' + libchatImage +'" alt="Ask a Librarian"></a>');
+				$(div).append('<a id="libchat-popup" href="' + chatUrl +'"><img style="height:' + imgHeight + ';" class="libchat_btn_img"  src="' + libchatImage +'" alt="Ask a Librarian"></a>');
 				$('#libchat-popup').on('click', function(e) {
 					e.preventDefault();
 					window.open(chatUrl, 'libchat', 'height=340,width=300,menubar=no,statusbar=no,left=' + ($(window).width() - chatWinWidth - 20)+',top='+ ($(window).height() - chatWinHeight - 150));
