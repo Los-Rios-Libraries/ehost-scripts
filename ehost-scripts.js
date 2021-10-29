@@ -53,40 +53,40 @@ var jQCheck = setInterval(function() {
 		var pid = ep.clientData.pid.split('.');
 		var custID = pid[0];
 		var college = [{ // allow use of different API profiles for sake of stats
-				'colName': 'American River College',
-				'custID': 'amerriv',
-				'abbr': 'arc',
-				'homepage': 'https://arc.losrios.edu/student-resources/library',
-				'libchatHash' : 'd05703ccd4c26fdae51ae0d0f5df25e1',
-				'libchatImage': 'https://libapps.s3.amazonaws.com/customers/932/images/Chat_wLibrarian__002_.png',
-				'imgHeight': '100px'
+				colName: 'American River College',
+				custID: 'amerriv',
+				abbr: 'arc',
+				homepage : 'https://arc.losrios.edu/student-resources/library',
+				libchatHash : 'd05703ccd4c26fdae51ae0d0f5df25e1',
+				libchatImage: 'https://libapps.s3.amazonaws.com/customers/932/images/Chat_wLibrarian__002_.png',
+				imgHeight: '100px'
 			},
 			{
-				'colName': 'Folsom Lake College',
-				'custID': 'ns015092',
-				'abbr': 'flc',
-				'homepage': 'https://flc.losrios.edu/student-resources/library',
-				'libchatHash': '7470fe5975ab434abfdbef6de53f6206',
-				'libchatImage': 'https://flc.losrios.edu/flc/main/img/Body-Office-UniversalDetail-940x529/Library/Graphics/ask-librarian.svg',
-				'imgHeight': '75px'
+				colName: 'Folsom Lake College',
+				custID: 'ns015092',
+				abbr: 'flc',
+				homepage: 'https://flc.losrios.edu/student-resources/library',
+				libchatHash: '7470fe5975ab434abfdbef6de53f6206',
+				libchatImage: 'https://flc.losrios.edu/flc/main/img/Body-Office-UniversalDetail-940x529/Library/Graphics/ask-librarian.svg',
+				imgHeight: '75px'
 			},
 			{
-				'colName': 'Cosumnes River College',
-				'custID': 'cosum',
-				'abbr': 'crc',
-				'homepage': 'https://crc.losrios.edu/student-resources/library',
-				'libchatHash': '46725c6c901e366cccd1c3598f4ece18',
-				'libchatImage': 'https://libapps.s3.amazonaws.com/accounts/109656/images/ask-a-librarian_orangebubble-paths.png',
-				'imgHeight': '75px'
+				colName: 'Cosumnes River College',
+				custID: 'cosum',
+				abbr: 'crc',
+				homepage: 'https://crc.losrios.edu/student-resources/library',
+				libchatHash: '46725c6c901e366cccd1c3598f4ece18',
+				libchatImage: 'https://libapps.s3.amazonaws.com/accounts/109656/images/ask-a-librarian_orangebubble-paths.png',
+				imgHeight: '75px'
 			},
 			{
-				'colName': 'Sacramento City College',
-				'custID': 'sacram',
-				'abbr': 'scc',
-				'homepage': 'https://scc.losrios.edu/library/',
-				'libchatHash': '3ed10430124d950ef2b216a68e1b18ba',
-				'libchatImage': 'https://libapps.s3.amazonaws.com/accounts/816/images/ask-a-librarian.png" alt="Ask a Librarian',
-				'imgHeight': '80px'
+				colName: 'Sacramento City College',
+				custID: 'sacram',
+				abbr: 'scc',
+				homepage: 'https://scc.losrios.edu/library/',
+				libchatHash: '3ed10430124d950ef2b216a68e1b18ba',
+				libchatImage: 'https://libapps.s3.amazonaws.com/accounts/816/images/ask-a-librarian.png" alt="Ask a Librarian',
+				imgHeight: '80px'
 			}
 
 		];
