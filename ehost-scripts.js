@@ -360,6 +360,22 @@ var jQCheck = setInterval(function() {
 		{
 			loadSubj('#DeliveryEmailSubject');
 		});
+		// add problem report button
+		if ($('.format-control').length) {
+			$('#Column1Content').append('<button class="button" type="button" id="lr-problem-reporter">Report a problem</button>');
+			$('#lr-problem-reporter').on('click', function() {
+				var w = 600;
+				var h = 600;
+				var left = (screen.width - w) / 2;
+				var top = (screen.height - h) / 4;
+				var refUrl = ep.clientData.plink || '';
+				var itemID = ep.clientData.currentRecord.Term || '';
+				window.open('https://library.losrios.edu/utilities/problem-reporter/?url=' + encodeURIComponent(refUrl) + '&recordid=' + itemID + '&college=' + currentCol.abbr + '&source=ebsco', 'Problem reporter', 'toolbar=no, location=no, menubar=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+
+
+			});
+		}
+		
 		showNote('note');
 		(function() { // load libchat
 			var div = document.createElement('div');

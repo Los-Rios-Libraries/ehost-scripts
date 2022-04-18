@@ -9,6 +9,8 @@ div[id^="libchat_"] {position:fixed; right:20px; bottom:10px; z-index:20000;}
 #problem-note {font-weight:bold; border:1px solid #ccc; background: #f9edbe; padding:8px;}
 #problem-note-dismiss {font-size:90%;}
 
+#lr-problem-reporter {padding:5px !important; font-size: 1em;}
+
 /* permalink copying feature */
 #lr-permalink-dd {margin-top:-.5em !important;}
 #lr-input-permalink {width:80%;}
