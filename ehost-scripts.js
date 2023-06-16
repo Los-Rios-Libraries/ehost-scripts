@@ -143,19 +143,20 @@ const jQCheck = setInterval(() => {
 
 				);
 
-				const input = $('#lr-input-permalink');
-				input.on('click', function()
-				{
-					this.select();
-				});
-				if (typeof(document.execCommand) === 'function')
-				{ // make sure browser is able to copy to clipboard
-
+				const input = document.getElementById('lr-input-permalink');
+				if (input) {
+					$(input).on('click', function()
+						{
+							this.select();
+					});
 					$('#lr-copy-permalink').show().on('click', function()
 					{
 
 						input.select();
-						document.execCommand('Copy');
+						input.setSelectionRange(0, 99999); // For mobile devices
+						// Copy the text inside the text field
+						navigator.clipboard.writeText(input.value);
+
 						input.blur();
 						if (!($('#lr-permalink-copied').length))
 						{
@@ -196,10 +197,9 @@ const jQCheck = setInterval(() => {
 						});
 
 					});
+
 				}
-
-
-
+				
 			})();
 
 		}
