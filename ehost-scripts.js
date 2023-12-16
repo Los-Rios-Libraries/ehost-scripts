@@ -109,8 +109,8 @@ const jQCheck = setInterval(() => {
 			domain = 'losrios.edu';
 		}
 		setCookie('homeLibrary', abbr, 30, domain);
-		const proxy = 'https://ezproxy.losrios.edu/login?url=';
-		const homePage = `${proxy}search.ebscohost.com/login.aspx?authtype=cookie,ip,uid&profile=${ep.interfaceId}&defaultdb=${ep.clientData.db[0]}`;
+		const proxy = `https://${abbr}losrios.idm.oclc.org/login?url=`;
+		const homePage = `${proxy}https://search.ebscohost.com/login.aspx?authtype=cookie,ip,uid&profile=${ep.interfaceId}&defaultdb=${ep.clientData.db[0]}`;
 		let permalink = '';
 		let pageType = '';
 		if (location.href.indexOf('/basic') > -1) {
