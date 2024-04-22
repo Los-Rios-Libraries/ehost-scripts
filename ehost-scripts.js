@@ -208,6 +208,17 @@ const jQCheck = setInterval(() => {
 			$('#footerLinks').prepend(`<li><a href="${currentCol.homepage}">${currentCol.colName} Library</a></li>`);
 
 		}
+		// add link to new UI
+		if (pageType === 'basic') {
+			const startPageSearch = $('#findFieldOuter');
+			if (startPageSearch.length) {
+				const previewDiv = $(
+					'<div style="width:80%;"><p style="float:right;"><a class="button" style="font-size:90%;" href="' + proxy + 'https://research.ebsco.com/">Preview the new EBSCOhost</a></p></div>'
+				);
+				startPageSearch.append(previewDiv);
+			}
+		}
+		
 
 		
 		// add problem report button
