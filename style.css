@@ -6,8 +6,10 @@ div[id^="libchat_"] {position:fixed; right:20px; bottom:10px; z-index:20000;}
 /*.libchat_btn_img {max-width: 120px;}*/
 
 /* problem note */
-#problem-note {font-weight:bold; border:1px solid #ccc; background: #f9edbe; padding:8px;}
-#problem-note-dismiss {font-size:90%;}
+#lr-note-container {background: #f9edbe; padding:8px 20px;min-height:3em;position:relative;}
+#problem-note {font-weight:bold; margin-top:8px; text-align: center;; }
+/* #problem-note a::after {content: '\21F1';} */
+#problem-note-dismiss {font-size:90%;position:absolute; right:0; bottom:2px;}
 
 #lr-problem-reporter {padding:5px !important; font-size: 1em;}
 
@@ -19,6 +21,10 @@ div[id^="libchat_"] {position:fixed; right:20px; bottom:10px; z-index:20000;}
 #lr-permalink-copied {height:auto !important;text-align: center; background:#F9EDBE; padding:4px;}
 #lr-permalink-dialog .ui-resizable-handle {display: none !important; }
 #lr-permalink-dialog .ui-dialog-titlebar {display:none;}
+@media (max-width:1400px) {
+	#problem-note {text-align: left;}
+	#problem-note-dismiss {position: static; margin-left:2em;}
+}
 @media (max-width: 1023px) {
 	.branding-container {display:block !important;}
 	#lr-input-permalink {width:100%;}

@@ -29,15 +29,25 @@ const showNote = (fileName) => {
 		$.get(url)
 		.done(function(response) {
 			if (response !== '') {
-				$(`<p id="problem-note" style="display:none;">${response}<button id="problem-note-dismiss" class="button" type="button">Hide this message</button></p>`).prependTo('#header').slideDown('slow');
+				const sessioncName = 'lr-note-session';
 				const domain = (() => {
 					const arr = location.host.split('.');
 					const result = arr.slice(arr.length -2);
 					return result.join('.');
 					})();
+				$(`<div id="lr-note-container" style="display:none;"><p id="problem-note">${response}<button id="problem-note-dismiss" class="button" type="button">Hide this message</button></p></div>`).insertAfter('#toolbarControl');
+				
+				if (document.cookie.indexOf(sessioncName + '=noslide') === -1) {
+					$('#lr-note-container').slideDown('slow');
+					setCookie(sessioncName, 'noslide', false, domain);
+				}
+				else {
+					$('#lr-note-container').show();
+				}
+				
 				$('#problem-note-dismiss').on('click', function() {
-					$(this).parent().slideUp();
-					setCookie(fileName, 'hide', false, domain);
+					$('#lr-note-container').slideUp();
+					setCookie(fileName, 'hide', 40, domain);
 					});
 				}
 				})
