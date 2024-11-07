@@ -30,13 +30,13 @@ const showNote = (fileName) => {
 		.done(function(response) {
 			if (response !== '') {
 				$(`<p id="problem-note" style="display:none;">${response}<button id="problem-note-dismiss" class="button" type="button">Hide this message</button></p>`).prependTo('#header').slideDown('slow');
+				const domain = (() => {
+					const arr = location.host.split('.');
+					const result = arr.slice(arr.length -2);
+					return result.join('.');
+					})();
 				$('#problem-note-dismiss').on('click', function() {
 					$(this).parent().slideUp();
-					const domain = (() => {
-						const arr = location.host.split('.');
-						const result = arr.slice(arr.length -2);
-						return result.join('.');
-						})();
 					setCookie(fileName, 'hide', false, domain);
 					});
 				}
