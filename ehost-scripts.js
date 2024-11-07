@@ -114,9 +114,9 @@ const jQCheck = setInterval(() => {
 			}
 		}
 		let domain = 'ebscohost.com';
-		if (location.hostname.indexOf('losrios.edu') > -1) {
+		if (location.hostname.indexOf('oclc.org') > -1) {
 			setCookie('onesearchDomain', 'proxy', false, 'losrios.edu');
-			domain = 'losrios.edu';
+			domain = 'oclc.org';
 		}
 		setCookie('homeLibrary', abbr, 30, domain);
 		const proxy = `https://${abbr}losrios.idm.oclc.org/login?url=`;
