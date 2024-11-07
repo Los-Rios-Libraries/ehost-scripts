@@ -25,7 +25,7 @@ const smallScreen = (() =>
 // show note when there are problems
 const showNote = (fileName) => {
 	if (document.cookie.indexOf(`${fileName}=hide`) === -1) {
-		const url = `https://www.library.losrios.edu/resources/ehost-scripts/${fileName}.php`; // this file needs to be edited with current message
+		const url = `https://library.losrios.edu/resources/ehost-scripts/${fileName}.php`; // this file needs to be edited with current message
 		$.get(url)
 		.done(function(response) {
 			if (response !== '') {
