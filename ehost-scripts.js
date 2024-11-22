@@ -229,24 +229,6 @@ const jQCheck = setInterval(() => {
 			}
 		}
 		
-
-		
-		// add problem report button
-		if ($('.format-control').length) {
-			$('#Column1Content').append('<button class="button" type="button" id="lr-problem-reporter">Report a problem</button>');
-			$('#lr-problem-reporter').on('click', function() {
-				const w = 600;
-				const h = 600;
-				const left = (screen.width - w) / 2;
-				const top = (screen.height - h) / 4;
-				const refUrl = ep.clientData.plink || '';
-				const itemID = ep.clientData.currentRecord.Term || '';
-				window.open(`https://library.losrios.edu/utilities/problem-reporter/?url=${encodeURIComponent(refUrl)}&recordid=${itemID}&college=${currentCol.abbr}&source=ebsco`, 'Problem reporter', 'toolbar=no, location=no, menubar=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
-
-
-			});
-		}
-		
 		showNote('note');
 		(() => { // load libchat
 			const div = document.createElement('div');
